@@ -11,8 +11,6 @@ function App() {
       <Route exact path="/starred">
         This is starred
       </Route>
-
-      <Route>Page is not found</Route>
     </Switch>
   );
 }

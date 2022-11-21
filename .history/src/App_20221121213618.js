@@ -8,11 +8,7 @@ function App() {
         This is home page
       </Route>
 
-      <Route exact path="/starred">
-        This is starred
-      </Route>
-
-      <Route>Page is not found</Route>
+      <Route path="/starred">This is starred</Route>
     </Switch>
   );
 }
