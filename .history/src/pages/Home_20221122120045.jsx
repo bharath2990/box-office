@@ -10,6 +10,7 @@ const Home = () => {
     // https://api.tvmaze.com/search/shows?q=men
     apiGet(`/search/shows?q=${input}`).then(result => {
       setResults(result);
+      console.log(result);
     });
   };
 
