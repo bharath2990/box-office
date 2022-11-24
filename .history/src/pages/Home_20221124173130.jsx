@@ -21,10 +21,6 @@ const Home = () => {
     }
   };
 
-  const onRadioChange = ev => {
-    setSearchOption(ev.target.value);
-  };
-
   const onInputChange = ev => {
     setInput(ev.target.value);
   };
@@ -68,7 +64,7 @@ const Home = () => {
           <input
             type="radio"
             id="actors-search"
-            value="people"
+            value="shows"
             checked={!isShowSearch}
             onChange={onRadioChange}
           />

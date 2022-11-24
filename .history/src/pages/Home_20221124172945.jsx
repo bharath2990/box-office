@@ -21,10 +21,6 @@ const Home = () => {
     }
   };
 
-  const onRadioChange = ev => {
-    setSearchOption(ev.target.value);
-  };
-
   const onInputChange = ev => {
     setInput(ev.target.value);
   };
@@ -34,11 +30,13 @@ const Home = () => {
       return <div>No results</div>;
     }
     if (results && results.length > 0) {
-      return results[0].show
-        ? results.map(item => <div key={item.show.id}>{item.show.name}</div>)
-        : results.map(item => (
-            <div key={item.person.id}>{item.person.name}</div>
-          ));
+      return (
+        <div>
+          {results.map(item => (
+            <div key={item.show.id}>{item.show.name}</div>
+          ))}
+        </div>
+      );
     }
     return null;
   };
@@ -60,16 +58,6 @@ const Home = () => {
             id="shows-search"
             value="shows"
             checked={isShowSearch}
-            onChange={onRadioChange}
-          />
-        </label>
-        <label htmlFor="actors-search">
-          Actors
-          <input
-            type="radio"
-            id="actors-search"
-            value="people"
-            checked={!isShowSearch}
             onChange={onRadioChange}
           />
         </label>

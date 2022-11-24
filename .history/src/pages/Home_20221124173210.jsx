@@ -68,7 +68,7 @@ const Home = () => {
           <input
             type="radio"
             id="actors-search"
-            value="people"
+            value="shows"
             checked={!isShowSearch}
             onChange={onRadioChange}
           />
