@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 // import Nav from './components/Nav';
 import Home from './pages/Home';
 import Starred from './pages/Starred';
-import Show from './pages/Show';
 
 function App() {
   return (
@@ -16,9 +15,8 @@ function App() {
         <Starred />
       </Route>
 
-      <Route exact path="/show/:id">
-        <Show />
-      </Route>
+      <Route exact path="/show/id"></Route>
+
       <Route>
         <div>Not found</div>
       </Route>
