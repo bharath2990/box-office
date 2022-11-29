@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
-// import { StyledShowCard } from '../components/show/ShowCard.styled';
+import { StyledShowCard } from '../components/show/ShowCard.styled';
 import { apiGet } from '../misc/config';
 
 const reducer = (prevState, action) => {
@@ -25,10 +25,7 @@ const initialState = {
 const Show = () => {
   const { id } = useParams();
 
-  const [{ show, isLoading, error }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // const [show, setShow] = useState(null);
   // const [isLoading, setIsLoading] = useState(true);
