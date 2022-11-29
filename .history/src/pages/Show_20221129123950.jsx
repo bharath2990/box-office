@@ -1,30 +1,28 @@
-/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
-import { apiGet } from '../misc/config';
 import ShowMainData from '../components/show/ShowMainData';
 import Details from '../components/show/Details';
 import Seasons from '../components/show/Seasons';
 import Cast from '../components/show/Cast';
+// import { StyledShowCard } from '../components/show/ShowCard.styled';
+import { apiGet } from '../misc/config';
 
 const reducer = (prevState, action) => {
   switch (action.type) {
     case 'FETCH_SUCCESS': {
       return { isLoading: false, error: null, show: action.show };
     }
-
     case 'FETCH_FAILED': {
       return { ...prevState, isLoading: false, error: action.error };
     }
-
     default:
       return prevState;
   }
 };
 
 const initialState = {
-  show: null,
-  isLoading: true,
+  show: true,
+  isLoading: null,
   error: null,
 };
 
@@ -36,9 +34,12 @@ const Show = () => {
     initialState
   );
 
+  // const [show, setShow] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
   useEffect(() => {
     let isMounted = true;
-
     apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`)
       .then(results => {
         if (isMounted) {
@@ -59,7 +60,6 @@ const Show = () => {
   if (isLoading) {
     return <div>Data is being loaded</div>;
   }
-
   if (error) {
     return <div>Error occured: {error}</div>;
   }
@@ -73,7 +73,6 @@ const Show = () => {
         summary={show.summary}
         tags={show.genres}
       />
-
       <div>
         <h2>Details</h2>
         <Details
@@ -85,12 +84,12 @@ const Show = () => {
 
       <div>
         <h2>Seasons</h2>
-        <Seasons seasons={show._embedded.seasons} />
+        <Seasons />
       </div>
 
       <div>
         <h2>Cast</h2>
-        <Cast cast={show._embedded.cast} />
+        <Cast />
       </div>
     </div>
   );
